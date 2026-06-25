@@ -11,7 +11,7 @@ flux bootstrap github \
   --branch=main \
   --path=./clusters \
   --personal=true \
-  --private=false
+  --private=true
 
 echo "==> Applying Kustomizations..."
 kubectl apply -f flux/kustomizations/

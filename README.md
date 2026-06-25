@@ -6,28 +6,17 @@ CI via GitHub Actions, SOPS secrets, and multi-environment deployments.
 ## Quick Start
 
 1. **Choose your CD tool:**
-   - [ArgoCD](./argocd/README.md) — App-of-Apps with ApplicationSets
-   - [Flux](./flux/README.md) — Kustomization + HelmRelease + ImageUpdateAutomation
+   - [ArgoCD](./argocd/) — App-of-Apps with ApplicationSets
+   - [Flux](./flux/) — Kustomization + HelmRelease + ImageUpdateAutomation
 
 2. **Bootstrap the cluster:**
    ```bash
    make bootstrap-argocd   # or make bootstrap-flux
    ```
 
-3. **Add an application:**
+3. **Commit and push:**
    ```bash
-   # Kustomize
-   cp -r apps/my-app apps/your-app
-   # Edit overlays/dev, staging, prod
-
-   # Helm
-   cp -r apps/my-app-chart apps/your-app
-   # Edit values/dev.yaml, staging.yaml, prod.yaml
-   ```
-
-4. **Commit and push:**
-   ```bash
-   git add . && git commit -m "Add your-app"
+   git add . && git commit -m "Initial commit"
    git push
    ```
 
@@ -35,15 +24,13 @@ CI via GitHub Actions, SOPS secrets, and multi-environment deployments.
 
 ```
 gitops-pipeline-template/
-├── apps/              # Application definitions
-├── clusters/          # Cluster-specific config per environment
-├── kustomize/         # Shared Kustomize bases and overlays
-├── helm/              # Shared Helm library charts
+├── clusters/          # Cluster-specific manifests per environment
+├── helm/              # Shared Helm library chart
 ├── argocd/            # ArgoCD manifests
 ├── flux/              # Flux CD manifests
 ├── .github/           # CI pipeline
 ├── .sops.yaml         # SOPS encryption config
-└── scripts/           # Bootstrap and helper scripts
+└── scripts/           # Bootstrap scripts
 ```
 
 ## Prerequisites

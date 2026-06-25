@@ -18,4 +18,4 @@ echo "==> Applying ApplicationSets..."
 kubectl apply -f argocd/applicationsets/
 
 echo "==> Done! ArgoCD URL: https://$(kubectl get svc -n argocd argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')"
-echo "==> Password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d)"
+echo "==> Retrieve admin password with: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d"

@@ -1,24 +1,13 @@
 SHELL := /bin/bash
 
-.PHONY: help lint test build scan push bootstrap-argocd bootstrap-flux encrypt decrypt
+.PHONY: help lint encrypt decrypt bootstrap-argocd bootstrap-flux
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 lint: ## Run linters
-	@echo "Running linters..."
-
-test: ## Run tests
-	@echo "Running tests..."
-
-build: ## Build container image
-	@echo "Building image..."
-
-scan: ## Scan image for vulnerabilities
-	@echo "Scanning with Trivy..."
-
-push: ## Push image to registry
-	@echo "Pushing image..."
+	@yamllint .
+	@hadolint Dockerfile
 
 encrypt: ## Encrypt secrets with SOPS
 	@sops --encrypt $(FILE) > $(FILE:.yaml=.enc.yaml)
