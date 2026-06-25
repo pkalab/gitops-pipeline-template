@@ -1,0 +1,7 @@
+creation_rules:
+  - path_regex: clusters/prod/.*\.enc\.yaml
+    age: age1... # replace with your Age public key
+  - path_regex: apps/.*/overlays/prod/.*\.enc\.yaml
+    age: age1...
+  - path_regex: infra/.*\.enc\.yaml
+    age: age1...

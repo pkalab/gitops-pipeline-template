@@ -1,0 +1,9 @@
+.age-key
+*.dec.yaml
+.terraform*
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+*.swp
+.DS_Store
